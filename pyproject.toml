@@ -2,9 +2,7 @@
 name = "dynamic-kg-extractor"
 version = "0.1.0"
 description = "Ontology driven KG Extractor"
-authors = [
-    { name = "Arda Can Aras", email = "ardaaras99@gmail.com" },
-]
+authors = [{ name = "Arda Can Aras", email = "ardaaras99@gmail.com" }]
 requires-python = ">=3.10,<3.13"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -14,18 +12,28 @@ classifiers = [
 ]
 readme = "README.md"
 
-dependencies = []
+dependencies = [
+    "base-ontology",
+    "ipython>=8.34.0",
+    "langchain>=0.3.21",
+    "langchain-community>=0.3.20",
+    "langchain-core>=0.3.45",
+    "langchain-openai>=0.3.9",
+    "pypdf2>=3.0.1",
+    "pyvis>=0.3.2",
+    "unstructured[pdf]>=0.17.2",
+]
 
 [dependency-groups]
 dev = [
-"bandit>=1.8.3",
+    "bandit>=1.8.3",
     "pip-audit>=2.8.0",
-"ipykernel>=6.29.5",
+    "ipykernel>=6.29.5",
     "ipython>=8.34.0",
     "ipywidgets>=8.1.5",
     "jupyter>=1.1.1",
-"mypy>=1.15.0",
-"pytest-cov>=6.0.0",
+    "mypy>=1.15.0",
+    "pytest-cov>=6.0.0",
     "pytest>=8.3.5",
     "commitizen>=4.4.1",
     "pep8-naming>=0.14.1",
@@ -36,7 +44,7 @@ dev = [
 ]
 
 [tool.ruff]
-line-length = 100
+line-length = 200
 
 [tool.ruff.format]
 # Like Black
@@ -76,3 +84,6 @@ version_files = [
 ]
 major_version_zero = true
 update_changelog_on_bump = true
+
+[tool.uv.sources]
+base-ontology = { git = "https://github.com/ardaaras99/base-ontology.git" }
