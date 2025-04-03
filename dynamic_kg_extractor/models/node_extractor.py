@@ -24,9 +24,9 @@ class NodeExtractor:
 
     def pipeline(self) -> list[BaseNode]:
         document = self._load_pdf()
-        content = str(self.chain.invoke({"input_text": document.page_content}).content)
-        entity_ontology_instance = self.parser.parse(content)
-        return self._extract_nodes_from_instance(entity_ontology_instance)
+        self.content = str(self.chain.invoke({"input_text": document.page_content}).content)
+        self.entity_ontology_instance = self.parser.parse(self.content)
+        return self._extract_nodes_from_instance(self.entity_ontology_instance)
 
     @staticmethod
     def _extract_nodes_from_instance(instance: BaseModel) -> list[BaseNode]:

@@ -44,7 +44,7 @@ dev = [
 ]
 
 [tool.ruff]
-line-length = 200
+line-length = 250
 
 [tool.ruff.format]
 # Like Black

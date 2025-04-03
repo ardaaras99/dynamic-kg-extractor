@@ -11,9 +11,9 @@ def node_dict_to_ontology(node_dict: dict[str, tuple[type[BaseNode], bool, str]]
         field_name = key.lower().replace("node", "") + ("_nodes" if multiplicity else "_node")
         if multiplicity:
             #! This is a hack to make the list type work with mypy
-            fields[field_name] = (list[node_class], Field(default=None, description=description))  # type: ignore
+            fields[field_name] = (list[node_class], Field(default_factory=lambda: [], description=description))  # type: ignore
         else:
-            fields[field_name] = (node_class, Field(default=None, description=description))
+            fields[field_name] = (node_class | None, Field(default=None, description=description))
 
     model = create_model("EntityOntology", **fields)
     return model
